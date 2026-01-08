@@ -1,7 +1,7 @@
-#End-to-End Business Analytics Platform (PostgreSQL)
+**End-to-End Business Analytics Platform (PostgreSQL)**
 
 
- **I built an end-to-end business analytics platform where I cleaned raw sales data, loaded it into PostgreSQL using client-side copy, and performed SQL-based KPI, category, and profitability analysis to derive actionable business insights.**
+ I built an end-to-end business analytics platform where I cleaned raw sales data, loaded it into PostgreSQL using client-side copy, and performed SQL-based KPI, category, and profitability analysis to derive actionable business insights.
 
 ---
 
@@ -54,18 +54,26 @@ The dataset represents transactional sales data commonly used in **retail and e-
 ## Project Architecture
 
 Raw CSV Data (Kaggle)
+
 ↓
+
 Data Cleaning & Standardization
-↓
+ 
+ ↓
+
 PostgreSQL Database (pgAdmin)
-↓
+
+ ↓ 
+
 SQL Queries for KPIs & Insights
-↓
+
+ ↓
+
 Business-Level Analysis
 
 ---
 
-## 🗄️ Database Schema (PostgreSQL)
+## Database Schema (PostgreSQL)
 
 ```sql
 CREATE TABLE sales (
@@ -78,15 +86,16 @@ CREATE TABLE sales (
     paymentmode VARCHAR
 );
 
-📥 Data Loading Strategy (IMPORTANT)
-❗ Why NOT COPY?
+**Data Loading Strategy (IMPORTANT)**
+
+Why NOT COPY?
 On Windows systems, PostgreSQL runs as a service and cannot access local user directories, which results in permission errors when using server-side COPY.
 
-✅ Solution Used: Client-Side \copy
+Solution Used: Client-Side \copy
 Data was safely loaded using pgAdmin’s PSQL Tool with client-side copy.
 
-sql
-Copy code
+sql(query in PSQL tool)
+
 \copy sales(order_id,amount,profit,quantity,category,sub_category,paymentmode)
 FROM 'C:/..../business-analytics-platform/data/cleaned_details.csv'
 DELIMITER ','
@@ -135,6 +144,7 @@ SELECT
 FROM sales
 GROUP BY paymentmode
 ORDER BY revenue DESC;
+
 Profit Margin Analysis
 sql:
 
@@ -159,54 +169,40 @@ HAVING SUM(amount) > 100000
 ORDER BY revenue DESC;
 
 
-💡Key Business Insights
+Key Business Insights
 
 Identified top revenue-driving categories
-
 Highlighted loss-making or low-margin segments
-
 Analyzed customer payment preferences
-
 Detected high-revenue but low-profit sub-categories, enabling optimization decisions
 
 
-📚 What I Learned From This Project
+What I Learned From This Project
 
 Designing and managing a relational schema for analytics
-
 Handling real-world PostgreSQL data loading challenges on Windows
-
 Understanding the difference between server-side COPY vs client-side \copy
-
 Writing business-focused SQL queries, not just technical ones
-
 Translating raw data into actionable KPIs
-
 Thinking like a business analyst, not just a coder
 
 
-🎯 Why This Project Matters
+Why This Project Matters
 
 This project demonstrates:
-
 End-to-end project ownership
-
 Production-aware database handling
-
 Strong SQL and analytical fundamentals
-
 Business-first analytical thinking
 
 
-📌 Future Enhancements
+Future Enhancements
 
 Power BI / Tableau dashboard connected to PostgreSQL
-
 Time-series trend analysis
-
 Customer segmentation
-
 Automated ETL pipeline
 
 Author
 Aditya Patil
+
